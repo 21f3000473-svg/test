@@ -6,16 +6,19 @@ on:
     - cron: '30 21 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   daily-commit-job:
-    name: Commit job - 21f3000473@ds.study.iitm.ac.in
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Make daily commit
+      # 👇 Step name must contain your email exactly as written
+      - name: Make daily commit by 21f3000473@ds.study.iitm.ac.in
         run: |
           echo "Daily update: $(date)" >> daily_log.txt
           git config user.name "github-actions[bot]"
